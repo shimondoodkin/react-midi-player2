@@ -19,6 +19,7 @@
     "emitDeclarationOnly": true
   },
   "include": [
+    "vite-env.d.ts",
     "index.ts",
     "components/**/*.ts",
     "components/**/*.tsx",

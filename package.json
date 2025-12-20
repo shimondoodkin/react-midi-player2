@@ -9,8 +9,9 @@
         "dist",
         "lib",
         "components",
-        "index.ts",
-        "README.md"
+        "README.md",
+        "tsconfig.json",
+        "vite.config.ts"
     ],
     "scripts": {
         "dev": "vite",
