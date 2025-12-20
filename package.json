@@ -35,7 +35,8 @@
     "license": "MIT",
     "dependencies": {
         "react": "^19.2.3",
-        "react-dom": "^19.2.3"
+        "react-dom": "^19.2.3",
+        "react-midi-player2": "github:shimondoodkin/react-midi-player2"
     },
     "devDependencies": {
         "@types/react": "^19.2.7",
