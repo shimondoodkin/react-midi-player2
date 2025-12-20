@@ -1,38 +1,44 @@
-# MIDI Player Component
+# React MIDI Player
 
-A React MIDI player component based on [javascript-midi-player](https://github.com/fraigo/javascript-midi-player) by fraigo, which uses WebAudioFont for MIDI playback in the browser.
+A React MIDI player component with HTML5 audio player styling. Built on top of [WebAudioFont](https://github.com/surikov/webaudiofont) by Sergey Surikov and inspired by [javascript-midi-player](https://github.com/fraigo/javascript-midi-player) by fraigo.
+
+## 🎵 [Live Demo](https://shimondoodkin.github.io/react-midi-player)
 
 ## Features
 
-- 🎵 Play MIDI files from URL or file upload
-- ⏯️ Play, pause, and stop controls
+- 🎵 Play MIDI files from URL or external file selection
+- ⏯️ Clean HTML5 audio player interface
 - 🎚️ Position seeking with progress slider
 - 🔁 Auto-replay option
-- 📊 Track information display
-- 🎹 Volume and instrument control per track
+- 📊 Real-time playback position tracking
+- 🎹 Full MIDI track support with WebAudioFont
 - ⚛️ React hooks for easy integration
 - 📘 TypeScript support
+- 🎨 Customizable styling with CSS modules
+- 🔄 Background playback support (continues when tab is inactive)
 
 ## Project Structure
 
 ```
-midi-player/
+react-midi-player/
 ├── lib/
 │   └── midi/
-│       ├── MIDIPlayer.js          # Core MIDI player (from javascript-midi-player)
-│       ├── MIDIFile.js            # MIDI file parser (from javascript-midi-player)
-│       ├── WebAudioFontPlayer.js  # Web Audio Font player (from javascript-midi-player)
+│       ├── MIDIPlayer.js          # Core MIDI player with background playback support
+│       ├── MIDIFile.js            # MIDI file parser
+│       ├── WebAudioFontPlayer.js  # Web Audio Font player
 │       ├── types.ts               # TypeScript type definitions
 │       ├── useMIDIPlayer.ts       # React hook for MIDI player
-│       ├── index.ts               # Library exports
-│       └── README.md              # Detailed library documentation
+│       └── index.ts               # Library exports
 ├── components/
-│   ├── MIDIPlayer.tsx             # Main React component with UI
-│   └── MIDIPlayerExample.tsx      # Example usage component
+│   ├── MIDIPlayer.tsx             # Main React component (HTML5 player style)
+│   └── MIDIPlayer.module.css      # Component styles
+├── demo/
+│   ├── App.tsx                    # Demo application
+│   ├── main.tsx                   # Demo entry point
+│   └── index.css                  # Demo styles
 ├── package.json                   # Package configuration
 ├── index.ts                       # Main entry point
-├── README.md                      # This file
-└── MIDI_PLAYER_INTEGRATION.md     # Integration guide
+└── README.md                      # This file
 ```
 
 ## Quick Start - Run the Demo
@@ -51,24 +57,42 @@ The demo will open automatically at `http://localhost:3000`. You can upload MIDI
 
 ## Installation
 
-This is a standalone component library. To use it in your project:
+```bash
+npm install react-midi-player
+```
 
-1. Copy the entire `midi-player` directory to your project
-2. Import the components as needed
+Or install from GitHub:
+
+```bash
+npm install shimondoodkin/react-midi-player
+```
 
 ## Usage
 
-### Basic Usage
+### Basic Usage with File Selection
+
+The component accepts a file externally (similar to HTML5 audio element):
 
 ```tsx
-import { MIDIPlayer } from './midi-player';
+import { useState } from 'react';
+import { MIDIPlayer } from 'react-midi-player';
 
 function MyComponent() {
+  const [file, setFile] = useState<File | null>(null);
+
   return (
-    <MIDIPlayer
-      autoPlay={false}
-      autoReplay={true}
-    />
+    <>
+      <input
+        type="file"
+        accept=".mid,.midi,.kar"
+        onChange={(e) => setFile(e.target.files?.[0] || null)}
+      />
+      <MIDIPlayer
+        file={file}
+        autoPlay={false}
+        autoReplay={false}
+      />
+    </>
   );
 }
 ```
@@ -76,7 +100,7 @@ function MyComponent() {
 ### Load from URL
 
 ```tsx
-import { MIDIPlayer } from './midi-player';
+import { MIDIPlayer } from 'react-midi-player';
 
 <MIDIPlayer
   url="/path/to/song.mid"
@@ -151,9 +175,10 @@ function CustomPlayer() {
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
+| `file` | `File \| null` | `undefined` | MIDI file to load (externally selected) |
 | `url` | `string` | `undefined` | URL to MIDI file to load automatically |
 | `autoPlay` | `boolean` | `false` | Start playing automatically when loaded |
-| `autoReplay` | `boolean` | `true` | Loop playback when song ends |
+| `autoReplay` | `boolean` | `false` | Loop playback when song ends |
 | `debug` | `boolean` | `false` | Enable debug console messages |
 | `className` | `string` | `''` | Additional CSS class names |
 | `onLoad` | `(song: MIDISong) => void` | `undefined` | Called when MIDI file is loaded |
@@ -162,7 +187,28 @@ function CustomPlayer() {
 
 ### useMIDIPlayer Hook
 
-See `lib/midi/README.md` for detailed API documentation.
+The `useMIDIPlayer` hook provides low-level control over MIDI playback:
+
+```tsx
+const {
+  player,           // MIDIPlayer instance
+  isReady,          // Ready to play
+  isPlaying,        // Currently playing
+  isPaused,         // Paused state
+  isStopped,        // Stopped state
+  currentPosition,  // Current position in seconds
+  duration,         // Total duration in seconds
+  currentSong,      // Loaded song data
+  play,             // Start playback
+  pause,            // Pause playback
+  stop,             // Stop playback
+  loadURL,          // Load from URL
+  loadFile,         // Load from File
+  setPosition,      // Seek to position
+  setVolume,        // Set track volume
+  setInstrument,    // Change track instrument
+} = useMIDIPlayer(options);
+```
 
 ## Browser Compatibility
 
@@ -174,10 +220,13 @@ This component uses the Web Audio API and requires a modern browser:
 
 ## Credits
 
-Based on:
-- [javascript-midi-player](https://github.com/fraigo/javascript-midi-player) by fraigo
-- [WebAudioFont](https://github.com/surikov/webaudiofont) by Sergey Surikov
+This project is built on top of excellent open-source work:
+
+- **[WebAudioFont](https://github.com/surikov/webaudiofont)** by Sergey Surikov - Provides the excellent sounding MIDI synthesis using Web Audio API
+- **[javascript-midi-player](https://github.com/fraigo/javascript-midi-player)** by fraigo - Initial development of the simple player interface
 
 ## License
 
-The original javascript-midi-player library and WebAudioFont are used under their respective licenses.
+MIT License - See LICENSE file for details.
+
+The underlying libraries (WebAudioFont and javascript-midi-player) are used under their respective licenses.
