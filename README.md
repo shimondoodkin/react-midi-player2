@@ -2,7 +2,7 @@
 
 A React MIDI player component with HTML5 audio player styling. Built on top of [WebAudioFont](https://github.com/surikov/webaudiofont) by Sergey Surikov and inspired by [javascript-midi-player](https://github.com/fraigo/javascript-midi-player) by fraigo.
 
-## 🎵 [Live Demo](https://shimondoodkin.github.io/react-midi-player)
+## 🎵 [Live Demo](https://shimondoodkin.github.io/react-midi-player2)
 
 ## Features
 
@@ -64,7 +64,7 @@ npm install react-midi-player
 Or install from GitHub:
 
 ```bash
-npm install shimondoodkin/react-midi-player
+npm install shimondoodkin/react-midi-player2
 ```
 
 ## Usage
@@ -75,7 +75,7 @@ The component accepts a file externally (similar to HTML5 audio element):
 
 ```tsx
 import { useState } from 'react';
-import { MIDIPlayer } from 'react-midi-player;
+import { MIDIPlayer } from 'react-midi-player2';
 
 function MyComponent() {
   const [file, setFile] = useState<File | null>(null);
