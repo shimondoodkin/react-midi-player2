@@ -1,0 +1,14 @@
+demo/
+.history/
+node_modules/
+*.log
+.DS_Store
+*.tsbuildinfo
+.vite/
+build/
+coverage/
+index.html
+vite.config.ts
+tsconfig.json
+vite-env.d.ts
+.gitignore
