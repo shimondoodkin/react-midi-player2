@@ -1,5 +1,5 @@
 {
-    "name": "midi-player",
+    "name": "react-midi-player2",
     "version": "1.0.0",
     "description": "React MIDI Player component based on javascript-midi-player",
     "main": "dist/index.js",
@@ -21,7 +21,7 @@
         "deploy": "gh-pages -d dist",
         "prepublishOnly": "npm run build"
     },
-    "homepage": "https://shimondoodkin.github.io/react-midi-player",
+    "homepage": "https://shimondoodkin.github.io/react-midi-player2",
     "keywords": [
         "midi-player",
         "midi",

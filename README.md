@@ -75,7 +75,7 @@ The component accepts a file externally (similar to HTML5 audio element):
 
 ```tsx
 import { useState } from 'react';
-import { MIDIPlayer } from 'react-midi-player';
+import { MIDIPlayer } from 'react-midi-player;
 
 function MyComponent() {
   const [file, setFile] = useState<File | null>(null);
@@ -100,7 +100,7 @@ function MyComponent() {
 ### Load from URL
 
 ```tsx
-import { MIDIPlayer } from 'react-midi-player';
+import { MIDIPlayer } from 'react-midi-player2';
 
 <MIDIPlayer
   url="/path/to/song.mid"
@@ -112,7 +112,7 @@ import { MIDIPlayer } from 'react-midi-player';
 ### With Event Handlers
 
 ```tsx
-import { MIDIPlayer, type MIDISong } from './midi-player';
+import { MIDIPlayer, type MIDISong } from 'react-midi-player2';
 
 function MyComponent() {
   const handleLoad = (song: MIDISong) => {
