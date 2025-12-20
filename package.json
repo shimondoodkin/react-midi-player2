@@ -1,0 +1,42 @@
+{
+    "name": "midi-player",
+    "version": "1.0.0",
+    "description": "React MIDI Player component based on javascript-midi-player",
+    "main": "dist/index.js",
+    "module": "dist/index.mjs",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist",
+        "lib",
+        "components",
+        "index.ts",
+        "README.md"
+    ],
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build",
+        "preview": "vite preview",
+        "prepublishOnly": "npm run build"
+    },
+    "keywords": [
+        "midi-player",
+        "midi",
+        "player",
+        "react",
+        "audio",
+        "music"
+    ],
+    "author": "Shimon Doodkin <shimondoodkin@gmail.com>",
+    "license": "MIT",
+    "dependencies": {
+        "react": "^19.2.3",
+        "react-dom": "^19.2.3"
+    },
+    "devDependencies": {
+        "@types/react": "^19.2.7",
+        "@types/react-dom": "^19.2.3",
+        "@vitejs/plugin-react": "^5.1.2",
+        "typescript": "^5.6.3",
+        "vite": "^6.0.3"
+    }
+}
