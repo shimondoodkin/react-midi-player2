@@ -31,7 +31,7 @@ react-midi-player/
 │       └── index.ts               # Library exports
 ├── components/
 │   ├── MIDIPlayer.tsx             # Main React component (HTML5 player style)
-│   └── MIDIPlayer.module.css      # Component styles
+│   └── MIDIPlayer.styles.ts       # Component styles (inline, auto-injected)
 ├── demo/
 │   ├── App.tsx                    # Demo application
 │   ├── main.tsx                   # Demo entry point
