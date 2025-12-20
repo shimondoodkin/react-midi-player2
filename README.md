@@ -67,6 +67,8 @@ Or install from GitHub:
 npm install shimondoodkin/react-midi-player2
 ```
 
+**Note:** Styles are automatically injected when the component is used - no need to import CSS separately.
+
 ## Usage
 
 ### Basic Usage with File Selection

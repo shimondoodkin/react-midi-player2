@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useMIDIPlayer } from '../lib/midi/useMIDIPlayer';
 import type { MIDISong } from '../lib/midi/types';
-import styles from './MIDIPlayer.module.css';
+import { styles, injectGlobalStyles } from './MIDIPlayer.styles';
 
 export interface MIDIPlayerProps {
   file?: File | null;
@@ -48,6 +48,10 @@ export function MIDIPlayer({
     onTick,
     onEnd,
   });
+
+  useEffect(() => {
+    injectGlobalStyles();
+  }, []);
 
   useEffect(() => {
     const loadScripts = async () => {
@@ -119,20 +123,24 @@ export function MIDIPlayer({
 
   if (!scriptsLoaded) {
     return (
-      <div className={`${styles.player} ${className}`}>
-        <div className={styles.loading}>Loading MIDI Player...</div>
+      <div style={styles.player} className={className}>
+        <div style={styles.loading}>Loading MIDI Player...</div>
       </div>
     );
   }
 
   return (
-    <div className={`${styles.player} ${className}`}>
-      <div className={styles.controls}>
+    <div style={styles.player} className={className}>
+      <div style={styles.controls}>
         <button
           type="button"
           onClick={handlePlayPause}
           disabled={!isReady}
-          className={styles.playButton}
+          className="react-midi-player-button"
+          style={{
+            ...styles.playButton,
+            ...(isReady ? {} : styles.playButtonDisabled),
+          }}
           aria-label={isPlaying ? 'Pause' : 'Play'}
         >
           {isPlaying ? (
@@ -146,11 +154,11 @@ export function MIDIPlayer({
           )}
         </button>
 
-        <div className={styles.timeDisplay}>
+        <div style={styles.timeDisplay}>
           {formatTime(currentPosition)}
         </div>
 
-        <div className={styles.progressContainer}>
+        <div style={styles.progressContainer}>
           <input
             type="range"
             min="0"
@@ -159,14 +167,16 @@ export function MIDIPlayer({
             value={currentPosition}
             onChange={handlePositionChange}
             disabled={!isReady}
-            className={styles.progressBar}
+            className="react-midi-player-progress"
             style={{
-              background: `linear-gradient(to right, #2196F3 0%, #2196F3 ${progressPercent}%, #ddd ${progressPercent}%, #ddd 100%)`
+              ...styles.progressBar,
+              ...(isReady ? {} : styles.progressBarDisabled),
+              background: `linear-gradient(to right, #2196F3 0%, #2196F3 ${progressPercent}%, #ddd ${progressPercent}%, #ddd 100%)`,
             }}
           />
         </div>
 
-        <div className={styles.timeDisplay}>
+        <div style={styles.timeDisplay}>
           {formatTime(duration)}
         </div>
       </div>

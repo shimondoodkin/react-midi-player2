@@ -1,7 +1,7 @@
-import lC, { useRef as VC, useState as s, useEffect as i, useCallback as B } from "react";
-function AC(c = {}) {
-  const Z = VC(null), [b, N] = s(!1), [X, l] = s("stopped"), [U, F] = s(0), [x, y] = s(0), [T, H] = s(null);
-  i(() => {
+import lC, { useRef as VC, useState as s, useEffect as x, useCallback as B } from "react";
+function AC(l = {}) {
+  const g = VC(null), [G, F] = s(!1), [X, V] = s("stopped"), [y, R] = s(0), [H, M] = s(0), [p, u] = s(null);
+  x(() => {
     if (typeof window > "u")
       return;
     const J = () => {
@@ -10,96 +10,96 @@ function AC(c = {}) {
         return;
       }
       const m = new window.MIDIPlayer();
-      m.autoReplay = c.autoReplay ?? !0, m.debug = c.debug ?? !1, m.onload = (W) => {
-        H(W), y(W.duration), N(!0), c.onLoad?.(W);
-      }, m.ontick = (W, p) => {
-        F(p), l(m.state), c.onTick?.(W, p);
-      }, m.onend = (W) => {
-        l("stopped"), c.onEnd?.(W);
-      }, Z.current = m;
+      m.autoReplay = l.autoReplay ?? !0, m.debug = l.debug ?? !1, m.onload = (N) => {
+        u(N), M(N.duration), F(!0), l.onLoad?.(N);
+      }, m.ontick = (N, Q) => {
+        R(Q), V(m.state), l.onTick?.(N, Q);
+      }, m.onend = (N) => {
+        V("stopped"), l.onEnd?.(N);
+      }, g.current = m;
     };
     return J(), () => {
-      Z.current && Z.current.stop();
+      g.current && g.current.stop();
     };
   }, []);
-  const Q = B(() => {
-    Z.current?.play(), l("playing");
-  }, []), R = B(() => {
-    Z.current?.pause(), l("paused");
-  }, []), a = B(() => {
-    Z.current?.stop(), l("stopped"), F(0);
+  const T = B(() => {
+    g.current?.play(), V("playing");
+  }, []), d = B(() => {
+    g.current?.pause(), V("paused");
+  }, []), z = B(() => {
+    g.current?.stop(), V("stopped"), R(0);
   }, []), Y = B((J) => {
-    N(!1), Z.current?.handleURL(J);
-  }, []), G = B((J) => {
-    N(!1), Z.current?.handleBlob(J);
+    F(!1), g.current?.handleURL(J);
+  }, []), U = B((J) => {
+    F(!1), g.current?.handleBlob(J);
   }, []), K = B((J) => {
-    Z.current?.setPosition(J), F(J);
+    g.current?.setPosition(J), R(J);
   }, []), S = B((J, m) => {
-    Z.current?.setVolume(J, m);
-  }, []), u = B((J, m) => {
-    Z.current?.setInstrument(J, m);
+    g.current?.setVolume(J, m);
+  }, []), o = B((J, m) => {
+    g.current?.setInstrument(J, m);
   }, []);
   return {
-    player: Z.current,
-    isReady: b,
+    player: g.current,
+    isReady: G,
     isPlaying: X === "playing",
     isPaused: X === "paused",
     isStopped: X === "stopped",
-    currentPosition: U,
-    duration: x,
-    currentSong: T,
-    play: Q,
-    pause: R,
-    stop: a,
+    currentPosition: y,
+    duration: H,
+    currentSong: p,
+    play: T,
+    pause: d,
+    stop: z,
     loadURL: Y,
-    loadFile: G,
+    loadFile: U,
     setPosition: K,
     setVolume: S,
-    setInstrument: u
+    setInstrument: o
   };
 }
-var e = { exports: {} }, L = {};
+var t = { exports: {} }, i = {};
 var CC;
 function cC() {
-  if (CC) return L;
+  if (CC) return i;
   CC = 1;
-  var c = /* @__PURE__ */ Symbol.for("react.transitional.element"), Z = /* @__PURE__ */ Symbol.for("react.fragment");
-  function b(N, X, l) {
-    var U = null;
-    if (l !== void 0 && (U = "" + l), X.key !== void 0 && (U = "" + X.key), "key" in X) {
-      l = {};
-      for (var F in X)
-        F !== "key" && (l[F] = X[F]);
-    } else l = X;
-    return X = l.ref, {
-      $$typeof: c,
-      type: N,
-      key: U,
+  var l = /* @__PURE__ */ Symbol.for("react.transitional.element"), g = /* @__PURE__ */ Symbol.for("react.fragment");
+  function G(F, X, V) {
+    var y = null;
+    if (V !== void 0 && (y = "" + V), X.key !== void 0 && (y = "" + X.key), "key" in X) {
+      V = {};
+      for (var R in X)
+        R !== "key" && (V[R] = X[R]);
+    } else V = X;
+    return X = V.ref, {
+      $$typeof: l,
+      type: F,
+      key: y,
       ref: X !== void 0 ? X : null,
-      props: l
+      props: V
     };
   }
-  return L.Fragment = Z, L.jsx = b, L.jsxs = b, L;
+  return i.Fragment = g, i.jsx = G, i.jsxs = G, i;
 }
 var E = {};
 var IC;
 function JC() {
   return IC || (IC = 1, process.env.NODE_ENV !== "production" && (function() {
-    function c(C) {
+    function l(C) {
       if (C == null) return null;
       if (typeof C == "function")
         return C.$$typeof === j ? null : C.displayName || C.name || null;
       if (typeof C == "string") return C;
       switch (C) {
-        case G:
+        case U:
           return "Fragment";
         case S:
           return "Profiler";
         case K:
           return "StrictMode";
-        case W:
+        case N:
           return "Suspense";
-        case p:
+        case Q:
           return "SuspenseList";
         case f:
           return "Activity";
@@ -112,96 +112,96 @@ function JC() {
             return "Portal";
           case J:
             return C.displayName || "Context";
-          case u:
+          case o:
             return (C._context.displayName || "Context") + ".Consumer";
           case m:
             var I = C.render;
             return C = C.displayName, C || (C = I.displayName || I.name || "", C = C !== "" ? "ForwardRef(" + C + ")" : "ForwardRef"), C;
           case O:
-            return I = C.displayName || null, I !== null ? I : c(C.type) || "Memo";
+            return I = C.displayName || null, I !== null ? I : l(C.type) || "Memo";
           case D:
             I = C._payload, C = C._init;
             try {
-              return c(C(I));
+              return l(C(I));
             } catch {
             }
         }
       return null;
     }
-    function Z(C) {
+    function g(C) {
       return "" + C;
     }
-    function b(C) {
+    function G(C) {
       try {
-        Z(C);
+        g(C);
         var I = !1;
       } catch {
         I = !0;
       }
       if (I) {
         I = console;
-        var g = I.error, V = typeof Symbol == "function" && Symbol.toStringTag && C[Symbol.toStringTag] || C.constructor.name || "Object";
-        return g.call(
+        var Z = I.error, A = typeof Symbol == "function" && Symbol.toStringTag && C[Symbol.toStringTag] || C.constructor.name || "Object";
+        return Z.call(
           I,
           "The provided key is an unsupported type %s. This value must be coerced to a string before using it here.",
-          V
-        ), Z(C);
+          A
+        ), g(C);
       }
     }
-    function N(C) {
-      if (C === G) return "<>";
+    function F(C) {
+      if (C === U) return "<>";
       if (typeof C == "object" && C !== null && C.$$typeof === D)
         return "<...>";
       try {
-        var I = c(C);
+        var I = l(C);
         return I ? "<" + I + ">" : "<...>";
       } catch {
         return "<...>";
       }
     }
     function X() {
-      var C = M.A;
+      var C = a.A;
       return C === null ? null : C.getOwner();
     }
-    function l() {
+    function V() {
       return Error("react-stack-top-frame");
     }
-    function U(C) {
+    function y(C) {
       if (k.call(C, "key")) {
         var I = Object.getOwnPropertyDescriptor(C, "key").get;
         if (I && I.isReactWarning) return !1;
       }
       return C.key !== void 0;
     }
-    function F(C, I) {
-      function g() {
+    function R(C, I) {
+      function Z() {
         v || (v = !0, console.error(
           "%s: `key` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://react.dev/link/special-props)",
           I
         ));
       }
-      g.isReactWarning = !0, Object.defineProperty(C, "key", {
-        get: g,
+      Z.isReactWarning = !0, Object.defineProperty(C, "key", {
+        get: Z,
         configurable: !0
       });
     }
-    function x() {
-      var C = c(this.type);
+    function H() {
+      var C = l(this.type);
       return n[C] || (n[C] = !0, console.error(
         "Accessing element.ref was removed in React 19. ref is now a regular prop. It will be removed from the JSX Element type in a future release."
       )), C = this.props.ref, C !== void 0 ? C : null;
     }
-    function y(C, I, g, V, t, r) {
-      var A = g.ref;
+    function M(C, I, Z, A, e, r) {
+      var c = Z.ref;
       return C = {
-        $$typeof: a,
+        $$typeof: z,
         type: C,
         key: I,
-        props: g,
-        _owner: V
-      }, (A !== void 0 ? A : null) !== null ? Object.defineProperty(C, "ref", {
+        props: Z,
+        _owner: A
+      }, (c !== void 0 ? c : null) !== null ? Object.defineProperty(C, "ref", {
         enumerable: !1,
-        get: x
+        get: H
       }) : Object.defineProperty(C, "ref", { enumerable: !1, value: null }), C._store = {}, Object.defineProperty(C._store, "validated", {
         configurable: !1,
         enumerable: !1,
@@ -216,7 +216,7 @@ function JC() {
         configurable: !1,
         enumerable: !1,
         writable: !0,
-        value: t
+        value: e
       }), Object.defineProperty(C, "_debugTask", {
         configurable: !1,
         enumerable: !1,
@@ -224,140 +224,247 @@ function JC() {
         value: r
       }), Object.freeze && (Object.freeze(C.props), Object.freeze(C)), C;
     }
-    function T(C, I, g, V, t, r) {
-      var A = I.children;
-      if (A !== void 0)
-        if (V)
-          if (w(A)) {
-            for (V = 0; V < A.length; V++)
-              H(A[V]);
-            Object.freeze && Object.freeze(A);
+    function p(C, I, Z, A, e, r) {
+      var c = I.children;
+      if (c !== void 0)
+        if (A)
+          if (w(c)) {
+            for (A = 0; A < c.length; A++)
+              u(c[A]);
+            Object.freeze && Object.freeze(c);
           } else
             console.error(
               "React.jsx: Static children should always be an array. You are likely explicitly calling React.jsxs or React.jsxDEV. Use the Babel transform instead."
             );
-        else H(A);
+        else u(c);
       if (k.call(I, "key")) {
-        A = c(C);
+        c = l(C);
         var h = Object.keys(I).filter(function(ZC) {
           return ZC !== "key";
         });
-        V = 0 < h.length ? "{key: someKey, " + h.join(": ..., ") + ": ...}" : "{key: someKey}", $[A + V] || (h = 0 < h.length ? "{" + h.join(": ..., ") + ": ...}" : "{}", console.error(
+        A = 0 < h.length ? "{key: someKey, " + h.join(": ..., ") + ": ...}" : "{key: someKey}", $[c + A] || (h = 0 < h.length ? "{" + h.join(": ..., ") + ": ...}" : "{}", console.error(
           `A props object containing a "key" prop is being spread into JSX:
   let props = %s;
   <%s {...props} />
 React keys must be passed directly to JSX without using spread:
   let props = %s;
   <%s key={someKey} {...props} />`,
-          V,
           A,
+          c,
           h,
-          A
-        ), $[A + V] = !0);
+          c
+        ), $[c + A] = !0);
       }
-      if (A = null, g !== void 0 && (b(g), A = "" + g), U(I) && (b(I.key), A = "" + I.key), "key" in I) {
-        g = {};
+      if (c = null, Z !== void 0 && (G(Z), c = "" + Z), y(I) && (G(I.key), c = "" + I.key), "key" in I) {
+        Z = {};
         for (var P in I)
-          P !== "key" && (g[P] = I[P]);
-      } else g = I;
-      return A && F(
-        g,
+          P !== "key" && (Z[P] = I[P]);
+      } else Z = I;
+      return c && R(
+        Z,
         typeof C == "function" ? C.displayName || C.name || "Unknown" : C
-      ), y(
+      ), M(
         C,
-        A,
-        g,
+        c,
+        Z,
         X(),
-        t,
+        e,
         r
       );
     }
-    function H(C) {
-      Q(C) ? C._store && (C._store.validated = 1) : typeof C == "object" && C !== null && C.$$typeof === D && (C._payload.status === "fulfilled" ? Q(C._payload.value) && C._payload.value._store && (C._payload.value._store.validated = 1) : C._store && (C._store.validated = 1));
+    function u(C) {
+      T(C) ? C._store && (C._store.validated = 1) : typeof C == "object" && C !== null && C.$$typeof === D && (C._payload.status === "fulfilled" ? T(C._payload.value) && C._payload.value._store && (C._payload.value._store.validated = 1) : C._store && (C._store.validated = 1));
     }
-    function Q(C) {
-      return typeof C == "object" && C !== null && C.$$typeof === a;
+    function T(C) {
+      return typeof C == "object" && C !== null && C.$$typeof === z;
     }
-    var R = lC, a = /* @__PURE__ */ Symbol.for("react.transitional.element"), Y = /* @__PURE__ */ Symbol.for("react.portal"), G = /* @__PURE__ */ Symbol.for("react.fragment"), K = /* @__PURE__ */ Symbol.for("react.strict_mode"), S = /* @__PURE__ */ Symbol.for("react.profiler"), u = /* @__PURE__ */ Symbol.for("react.consumer"), J = /* @__PURE__ */ Symbol.for("react.context"), m = /* @__PURE__ */ Symbol.for("react.forward_ref"), W = /* @__PURE__ */ Symbol.for("react.suspense"), p = /* @__PURE__ */ Symbol.for("react.suspense_list"), O = /* @__PURE__ */ Symbol.for("react.memo"), D = /* @__PURE__ */ Symbol.for("react.lazy"), f = /* @__PURE__ */ Symbol.for("react.activity"), j = /* @__PURE__ */ Symbol.for("react.client.reference"), M = R.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, k = Object.prototype.hasOwnProperty, w = Array.isArray, o = console.createTask ? console.createTask : function() {
+    var d = lC, z = /* @__PURE__ */ Symbol.for("react.transitional.element"), Y = /* @__PURE__ */ Symbol.for("react.portal"), U = /* @__PURE__ */ Symbol.for("react.fragment"), K = /* @__PURE__ */ Symbol.for("react.strict_mode"), S = /* @__PURE__ */ Symbol.for("react.profiler"), o = /* @__PURE__ */ Symbol.for("react.consumer"), J = /* @__PURE__ */ Symbol.for("react.context"), m = /* @__PURE__ */ Symbol.for("react.forward_ref"), N = /* @__PURE__ */ Symbol.for("react.suspense"), Q = /* @__PURE__ */ Symbol.for("react.suspense_list"), O = /* @__PURE__ */ Symbol.for("react.memo"), D = /* @__PURE__ */ Symbol.for("react.lazy"), f = /* @__PURE__ */ Symbol.for("react.activity"), j = /* @__PURE__ */ Symbol.for("react.client.reference"), a = d.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, k = Object.prototype.hasOwnProperty, w = Array.isArray, L = console.createTask ? console.createTask : function() {
       return null;
     };
-    R = {
+    d = {
       react_stack_bottom_frame: function(C) {
         return C();
       }
     };
-    var v, n = {}, q = R.react_stack_bottom_frame.bind(
-      R,
-      l
-    )(), _ = o(N(l)), $ = {};
-    E.Fragment = G, E.jsx = function(C, I, g) {
-      var V = 1e4 > M.recentlyCreatedOwnerStacks++;
-      return T(
+    var v, n = {}, q = d.react_stack_bottom_frame.bind(
+      d,
+      V
+    )(), _ = L(F(V)), $ = {};
+    E.Fragment = U, E.jsx = function(C, I, Z) {
+      var A = 1e4 > a.recentlyCreatedOwnerStacks++;
+      return p(
         C,
         I,
-        g,
+        Z,
         !1,
-        V ? Error("react-stack-top-frame") : q,
-        V ? o(N(C)) : _
+        A ? Error("react-stack-top-frame") : q,
+        A ? L(F(C)) : _
       );
-    }, E.jsxs = function(C, I, g) {
-      var V = 1e4 > M.recentlyCreatedOwnerStacks++;
-      return T(
+    }, E.jsxs = function(C, I, Z) {
+      var A = 1e4 > a.recentlyCreatedOwnerStacks++;
+      return p(
         C,
         I,
-        g,
+        Z,
         !0,
-        V ? Error("react-stack-top-frame") : q,
-        V ? o(N(C)) : _
+        A ? Error("react-stack-top-frame") : q,
+        A ? L(F(C)) : _
       );
     };
   })()), E;
 }
 var gC;
 function XC() {
-  return gC || (gC = 1, process.env.NODE_ENV === "production" ? e.exports = cC() : e.exports = JC()), e.exports;
+  return gC || (gC = 1, process.env.NODE_ENV === "production" ? t.exports = cC() : t.exports = JC()), t.exports;
 }
-var d = XC();
-const mC = "_player_1biil_1", dC = "_loading_1biil_21", WC = "_controls_1biil_41", NC = "_playButton_1biil_53", FC = "_timeDisplay_1biil_111", RC = "_progressContainer_1biil_129", bC = "_progressBar_1biil_145", z = {
-  player: mC,
-  loading: dC,
-  controls: WC,
-  playButton: NC,
-  timeDisplay: FC,
-  progressContainer: RC,
-  progressBar: bC
+var W = XC();
+const b = {
+  player: {
+    width: "100%",
+    maxWidth: "600px",
+    background: "#f1f3f4",
+    borderRadius: "8px",
+    padding: "12px 16px",
+    boxShadow: "0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)",
+    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
+  },
+  loading: {
+    textAlign: "center",
+    padding: "20px",
+    color: "#666"
+  },
+  controls: {
+    display: "flex",
+    alignItems: "center",
+    gap: "12px"
+  },
+  playButton: {
+    width: "40px",
+    height: "40px",
+    border: "none",
+    borderRadius: "50%",
+    background: "#2196F3",
+    color: "white",
+    cursor: "pointer",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    transition: "background 0.2s",
+    flexShrink: 0
+  },
+  playButtonDisabled: {
+    background: "#ccc",
+    cursor: "not-allowed"
+  },
+  timeDisplay: {
+    fontSize: "13px",
+    color: "#5f6368",
+    fontVariantNumeric: "tabular-nums",
+    minWidth: "40px",
+    textAlign: "center",
+    flexShrink: 0
+  },
+  progressContainer: {
+    flex: 1,
+    position: "relative",
+    height: "6px",
+    display: "flex",
+    alignItems: "center"
+  },
+  progressBar: {
+    width: "100%",
+    height: "6px",
+    WebkitAppearance: "none",
+    appearance: "none",
+    background: "#ddd",
+    borderRadius: "3px",
+    outline: "none",
+    cursor: "pointer",
+    transition: "height 0.2s"
+  },
+  progressBarDisabled: {
+    cursor: "not-allowed",
+    opacity: 0.5
+  }
+}, mC = () => {
+  if (typeof document > "u") return;
+  const l = "react-midi-player-styles";
+  if (document.getElementById(l)) return;
+  const g = document.createElement("style");
+  g.id = l, g.textContent = `
+    .react-midi-player-progress:hover {
+      height: 8px !important;
+    }
+    
+    .react-midi-player-progress::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #2196F3;
+      cursor: pointer;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+      transition: transform 0.2s;
+    }
+    
+    .react-midi-player-progress::-webkit-slider-thumb:hover {
+      transform: scale(1.2);
+    }
+    
+    .react-midi-player-progress::-moz-range-thumb {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #2196F3;
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+      transition: transform 0.2s;
+    }
+    
+    .react-midi-player-progress::-moz-range-thumb:hover {
+      transform: scale(1.2);
+    }
+    
+    .react-midi-player-button:hover:not(:disabled) {
+      background: #1976D2 !important;
+    }
+  `, document.head.appendChild(g);
 };
-function UC({
-  file: c,
-  url: Z,
-  autoPlay: b = !1,
-  autoReplay: N = !1,
+function WC({
+  file: l,
+  url: g,
+  autoPlay: G = !1,
+  autoReplay: F = !1,
   debug: X = !1,
-  className: l = "",
-  onLoad: U,
-  onTick: F,
-  onEnd: x
+  className: V = "",
+  onLoad: y,
+  onTick: R,
+  onEnd: H
 }) {
-  const [y, T] = s(!1), [H, Q] = s(""), {
-    isReady: R,
-    isPlaying: a,
+  const [M, p] = s(!1), [u, T] = s(""), {
+    isReady: d,
+    isPlaying: z,
     currentPosition: Y,
-    duration: G,
+    duration: U,
     currentSong: K,
     play: S,
-    pause: u,
+    pause: o,
     stop: J,
     loadURL: m,
-    loadFile: W,
-    setPosition: p
+    loadFile: N,
+    setPosition: Q
   } = AC({
-    autoReplay: N,
+    autoReplay: F,
     debug: X,
-    onLoad: U,
-    onTick: F,
-    onEnd: x
+    onLoad: y,
+    onTick: R,
+    onEnd: H
   });
-  i(() => {
+  x(() => {
+    mC();
+  }, []), x(() => {
     (async () => {
       if (typeof window > "u") return;
       const k = [
@@ -366,62 +473,68 @@ function UC({
         new URL("data:text/javascript;base64,ZnVuY3Rpb24gTUlESVBsYXllcihzb3VyY2UsIG9ubG9hZCkgewoKICAgIHZhciBhdWRpb0NvbnRleHQgPSBudWxsOwogICAgdmFyIHBsYXllciA9IG51bGw7CiAgICB2YXIgcmV2ZXJiZXJhdG9yID0gbnVsbDsKICAgIHZhciBzb25nU3RhcnQgPSAwOwogICAgdmFyIGlucHV0ID0gbnVsbDsKICAgIHZhciBjdXJyZW50U29uZ1RpbWUgPSAwOwogICAgdmFyIG5leHRTdGVwVGltZSA9IDA7CiAgICB2YXIgbmV4dFBvc2l0aW9uVGltZSA9IDA7CiAgICB2YXIgbG9hZGVkc29uZyA9IG51bGw7CiAgICB2YXIgc3RvcHBlZHNvbmcgPSBudWxsOwogICAgdmFyIHN0ZXBEdXJhdGlvbiA9IDQ0IC8gMTAwMDsKICAgIHZhciBsYXN0UG9zaXRpb24gPSAwOwogICAgdmFyIHNlbGYgPSB0aGlzOwoKICAgIHRoaXMuY3VycmVudFBvc2l0aW9uID0gMDsKICAgIHRoaXMuZHVyYXRpb24gPSAwOwogICAgdGhpcy5vbmxvYWQgPSBvbmxvYWQ7CiAgICB0aGlzLlNUT1BQRUQgPSAic3RvcHBlZCI7CiAgICB0aGlzLlBMQVlJTkcgPSAicGxheWluZyI7CiAgICB0aGlzLlBBVVNFRCA9ICJwYXVzZWQiOwoKICAgIHRoaXMuZGVidWcgPSB0cnVlCiAgICAvLyBhdXRvUmVwbGF5IGlzIGEgYm9vbGVhbiB0aGF0IGluZGljYXRlcyBpZiB0aGUgc29uZyBzaG91bGQgYmUgcmVwbGF5ZWQgYWZ0ZXIgaXQgZW5kcwogICAgdGhpcy5hdXRvUmVwbGF5ID0gdHJ1ZTsKICAgIC8vIG9udGljayBpcyBhIGZ1bmN0aW9uIHRoYXQgaXMgY2FsbGVkIGV2ZXJ5IHRpbWUgdGhlIHNvbmcgYWR2YW5jZXMKICAgIHRoaXMub250aWNrID0gbnVsbDsKICAgIC8vIG9uZW5kIGlzIGEgZnVuY3Rpb24gdGhhdCBpcyBjYWxsZWQgd2hlbiB0aGUgc29uZyBlbmRzCiAgICB0aGlzLm9uZW5kID0gbnVsbDsKCiAgICB0aGlzLmxvZyA9IGZ1bmN0aW9uKG1zZywgZXh0cmEpIHsKICAgICAgICBpZiAodGhpcy5kZWJ1ZykgY29uc29sZS5sb2cobXNnLCBleHRyYSk7CiAgICB9CgogICAgdGhpcy5wbGF5ID0gZnVuY3Rpb24oKSB7CiAgICAgICAgaWYgKCFsb2FkZWRzb25nICYmIHN0b3BwZWRzb25nKSB7CiAgICAgICAgICAgIGxvYWRlZHNvbmcgPSBzdG9wcGVkc29uZzsKICAgICAgICB9CiAgICAgICAgaWYgKGxvYWRlZHNvbmcpIHsKICAgICAgICAgICAgdHJ5IHsKICAgICAgICAgICAgICAgIHRoaXMuc3RhcnRQbGF5KGxvYWRlZHNvbmcpOwogICAgICAgICAgICAgICAgaWYgKHRoaXMuc3RhdGUgPT0gdGhpcy5QQVVTRUQpIHsKICAgICAgICAgICAgICAgICAgICB0aGlzLnNldFBvc2l0aW9uKGxhc3RQb3NpdGlvbik7CiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICB0aGlzLnN0YXRlID0gdGhpcy5QTEFZSU5HOwogICAgICAgICAgICB9IGNhdGNoIChleHB0KSB7CiAgICAgICAgICAgICAgICB0aGlzLmxvZygnZXJyb3IgJywgZXhwdCk7CiAgICAgICAgICAgIH0KICAgICAgICB9CiAgICB9CiAgICB0aGlzLnBhdXNlID0gZnVuY3Rpb24oKSB7CiAgICAgICAgaWYgKGxvYWRlZHNvbmcpIHsKICAgICAgICAgICAgbGFzdFBvc2l0aW9uID0gdGhpcy5nZXRQb3NpdGlvbigpOwogICAgICAgICAgICB0aGlzLmxvZygiUGF1c2VkIHBvc2l0aW9uIiwgbGFzdFBvc2l0aW9uKTsKICAgICAgICAgICAgdGhpcy5zdG9wKCk7CiAgICAgICAgICAgIGN1cnJlbnRTb25nVGltZSA9IGxhc3RQb3NpdGlvbjsKICAgICAgICAgICAgdGhpcy5zdGF0ZSA9IHRoaXMuUEFVU0VEOwogICAgICAgIH0KICAgIH0KICAgIHRoaXMuc3RvcCA9IGZ1bmN0aW9uKCkgewogICAgICAgIGlmIChsb2FkZWRzb25nKSB7CiAgICAgICAgICAgIHRoaXMubG9nKCJTdG9wIik7CiAgICAgICAgICAgIHBsYXllci5jYW5jZWxRdWV1ZShhdWRpb0NvbnRleHQpOwogICAgICAgICAgICBzb25nU3RhcnQgPSAwOwogICAgICAgICAgICBjdXJyZW50U29uZ1RpbWUgPSAwOwogICAgICAgICAgICBzdG9wcGVkc29uZyA9IGxvYWRlZHNvbmc7CiAgICAgICAgICAgIGxvYWRlZHNvbmcgPSBudWxsOwogICAgICAgICAgICB0aGlzLnN0YXRlID0gdGhpcy5TVE9QUEVEOwogICAgICAgIH0KICAgIH0KICAgIHRoaXMuZ2V0Q29udGV4dCA9IGZ1bmN0aW9uKCkgewogICAgICAgIHJldHVybiBwbGF5ZXI7CiAgICB9CiAgICB0aGlzLnN0YXJ0UGxheSA9IGZ1bmN0aW9uKHNvbmcpIHsKICAgICAgICBjdXJyZW50U29uZ1RpbWUgPSAwOwogICAgICAgIHNvbmdTdGFydCA9IGF1ZGlvQ29udGV4dC5jdXJyZW50VGltZTsKICAgICAgICBuZXh0U3RlcFRpbWUgPSBhdWRpb0NvbnRleHQuY3VycmVudFRpbWU7CgogICAgICAgIHRoaXMudGljayhzb25nLCBzdGVwRHVyYXRpb24pOwogICAgfQoKICAgIHRoaXMudGljayA9IGZ1bmN0aW9uKHNvbmcsIHN0ZXBEdXJhdGlvbikgewogICAgICAgIC8vIFNjaGVkdWxlIGFoZWFkIHRvIHN1cnZpdmUgYmFja2dyb3VuZCB0aHJvdHRsaW5nICgxLjBzIGJ1ZmZlcikKICAgICAgICB2YXIgbG9va2FoZWFkID0gMS4wOwoKICAgICAgICB3aGlsZSAobmV4dFN0ZXBUaW1lIDwgYXVkaW9Db250ZXh0LmN1cnJlbnRUaW1lICsgbG9va2FoZWFkKSB7CiAgICAgICAgICAgIHRoaXMuc2VuZE5vdGVzKHNvbmcsIHNvbmdTdGFydCwgY3VycmVudFNvbmdUaW1lLCBjdXJyZW50U29uZ1RpbWUgKyBzdGVwRHVyYXRpb24sIGF1ZGlvQ29udGV4dCwgaW5wdXQsIHBsYXllcik7CiAgICAgICAgICAgIGN1cnJlbnRTb25nVGltZSA9IGN1cnJlbnRTb25nVGltZSArIHN0ZXBEdXJhdGlvbjsKICAgICAgICAgICAgbmV4dFN0ZXBUaW1lID0gbmV4dFN0ZXBUaW1lICsgc3RlcER1cmF0aW9uOwogICAgICAgICAgICBpZiAoY3VycmVudFNvbmdUaW1lID4gc29uZy5kdXJhdGlvbikgewogICAgICAgICAgICAgICAgdGhpcy5sb2coIkVuZCBvZiBzb25nIik7CiAgICAgICAgICAgICAgICBpZiAodGhpcy5vbmVuZCAmJiB0eXBlb2YodGhpcy5vbmVuZCkgPT0gImZ1bmN0aW9uIikgewogICAgICAgICAgICAgICAgICAgIHRoaXMub25lbmQobG9hZGVkc29uZyk7CiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICBpZiAodGhpcy5hdXRvUmVwbGF5KSB7CiAgICAgICAgICAgICAgICAgICAgY3VycmVudFNvbmdUaW1lID0gY3VycmVudFNvbmdUaW1lIC0gc29uZy5kdXJhdGlvbjsKICAgICAgICAgICAgICAgICAgICB0aGlzLnNlbmROb3Rlcyhzb25nLCBzb25nU3RhcnQsIDAsIGN1cnJlbnRTb25nVGltZSwgYXVkaW9Db250ZXh0LCBpbnB1dCwgcGxheWVyKTsKICAgICAgICAgICAgICAgICAgICBzb25nU3RhcnQgPSBzb25nU3RhcnQgKyBzb25nLmR1cmF0aW9uOwogICAgICAgICAgICAgICAgfSBlbHNlIHsKICAgICAgICAgICAgICAgICAgICBpZiAodGhpcy5vbnRpY2sgJiYgdHlwZW9mKHRoaXMub250aWNrKSA9PSAiZnVuY3Rpb24iKSB7CiAgICAgICAgICAgICAgICAgICAgICAgIHRoaXMub250aWNrKGxvYWRlZHNvbmcsIHNvbmcuZHVyYXRpb24pOwogICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICB0aGlzLnN0b3AoKTsKICAgICAgICAgICAgICAgICAgICByZXR1cm47CiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIH0KICAgICAgICB9CgogICAgICAgIGlmIChuZXh0UG9zaXRpb25UaW1lIDwgYXVkaW9Db250ZXh0LmN1cnJlbnRUaW1lKSB7CiAgICAgICAgICAgIHRoaXMuY3VycmVudFBvc2l0aW9uID0gY3VycmVudFNvbmdUaW1lOwogICAgICAgICAgICB0aGlzLmR1cmF0aW9uID0gc29uZy5kdXJhdGlvbjsKICAgICAgICAgICAgbmV4dFBvc2l0aW9uVGltZSA9IGF1ZGlvQ29udGV4dC5jdXJyZW50VGltZSArIDM7CiAgICAgICAgfQogICAgICAgIGlmICh0aGlzLm9udGljayAmJiB0eXBlb2YodGhpcy5vbnRpY2spID09ICJmdW5jdGlvbiIpIHsKICAgICAgICAgICAgdGhpcy5vbnRpY2sobG9hZGVkc29uZywgY3VycmVudFNvbmdUaW1lKTsKICAgICAgICB9CiAgICAgICAgd2luZG93LnNldFRpbWVvdXQoZnVuY3Rpb24oKSB7CiAgICAgICAgICAgIGlmIChsb2FkZWRzb25nKSB7CiAgICAgICAgICAgICAgICBzZWxmLnRpY2sobG9hZGVkc29uZywgc3RlcER1cmF0aW9uKTsKICAgICAgICAgICAgfQogICAgICAgIH0sIDUwKTsgLy8gUmVsYXhlZCB0aW1lciBzaW5jZSB3ZSBidWZmZXIgYWhlYWQKICAgIH0KICAgIHRoaXMuc2VuZE5vdGVzID0gZnVuY3Rpb24oc29uZywgc29uZ1N0YXJ0LCBzdGFydCwgZW5kLCBhdWRpb0NvbnRleHQsIGlucHV0LCBwbGF5ZXIpIHsKICAgICAgICBmb3IgKHZhciB0ID0gMDsgdCA8IHNvbmcudHJhY2tzLmxlbmd0aDsgdCsrKSB7CiAgICAgICAgICAgIHZhciB0cmFjayA9IHNvbmcudHJhY2tzW3RdOwogICAgICAgICAgICBmb3IgKHZhciBpID0gMDsgaSA8IHRyYWNrLm5vdGVzLmxlbmd0aDsgaSsrKSB7CiAgICAgICAgICAgICAgICBpZiAodHJhY2subm90ZXNbaV0ud2hlbiA+PSBzdGFydCAmJiB0cmFjay5ub3Rlc1tpXS53aGVuIDwgZW5kKSB7CiAgICAgICAgICAgICAgICAgICAgdmFyIHdoZW4gPSBzb25nU3RhcnQgKyB0cmFjay5ub3Rlc1tpXS53aGVuOwoKICAgICAgICAgICAgICAgICAgICAvLyBTa2lwIG5vdGVzIHRoYXQgYXJlIHRvbyBmYXIgaW4gdGhlIHBhc3QgdG8gYXZvaWQgImZhc3QgY2F0Y2ggdXAiIGJ1cnN0cwogICAgICAgICAgICAgICAgICAgIGlmICh3aGVuIDwgYXVkaW9Db250ZXh0LmN1cnJlbnRUaW1lIC0gMC4xKSB7CiAgICAgICAgICAgICAgICAgICAgICAgIGNvbnRpbnVlOwogICAgICAgICAgICAgICAgICAgIH0KCiAgICAgICAgICAgICAgICAgICAgdmFyIGR1cmF0aW9uID0gdHJhY2subm90ZXNbaV0uZHVyYXRpb247CiAgICAgICAgICAgICAgICAgICAgaWYgKGR1cmF0aW9uID4gMykgewogICAgICAgICAgICAgICAgICAgICAgICBkdXJhdGlvbiA9IDM7CiAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgIHZhciBpbnN0ciA9IHRyYWNrLmluZm8udmFyaWFibGU7CiAgICAgICAgICAgICAgICAgICAgdmFyIHYgPSB0cmFjay52b2x1bWUgLyA3OwogICAgICAgICAgICAgICAgICAgIHBsYXllci5xdWV1ZVdhdmVUYWJsZShhdWRpb0NvbnRleHQsIGlucHV0LCB3aW5kb3dbaW5zdHJdLCB3aGVuLCB0cmFjay5ub3Rlc1tpXS5waXRjaCwgZHVyYXRpb24sIHYsIHRyYWNrLm5vdGVzW2ldLnNsaWRlcyk7CiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIH0KICAgICAgICB9CiAgICAgICAgZm9yICh2YXIgYiA9IDA7IGIgPCBzb25nLmJlYXRzLmxlbmd0aDsgYisrKSB7CiAgICAgICAgICAgIHZhciBiZWF0ID0gc29uZy5iZWF0c1tiXTsKICAgICAgICAgICAgZm9yICh2YXIgaSA9IDA7IGkgPCBiZWF0Lm5vdGVzLmxlbmd0aDsgaSsrKSB7CiAgICAgICAgICAgICAgICBpZiAoYmVhdC5ub3Rlc1tpXS53aGVuID49IHN0YXJ0ICYmIGJlYXQubm90ZXNbaV0ud2hlbiA8IGVuZCkgewogICAgICAgICAgICAgICAgICAgIHZhciB3aGVuID0gc29uZ1N0YXJ0ICsgYmVhdC5ub3Rlc1tpXS53aGVuOwoKICAgICAgICAgICAgICAgICAgICAvLyBTa2lwIG5vdGVzIHRoYXQgYXJlIHRvbyBmYXIgaW4gdGhlIHBhc3QKICAgICAgICAgICAgICAgICAgICBpZiAod2hlbiA8IGF1ZGlvQ29udGV4dC5jdXJyZW50VGltZSAtIDAuMSkgewogICAgICAgICAgICAgICAgICAgICAgICBjb250aW51ZTsKICAgICAgICAgICAgICAgICAgICB9CgogICAgICAgICAgICAgICAgICAgIHZhciBkdXJhdGlvbiA9IDEuNTsKICAgICAgICAgICAgICAgICAgICB2YXIgaW5zdHIgPSBiZWF0LmluZm8udmFyaWFibGU7CiAgICAgICAgICAgICAgICAgICAgdmFyIHYgPSBiZWF0LnZvbHVtZSAvIDI7CiAgICAgICAgICAgICAgICAgICAgcGxheWVyLnF1ZXVlV2F2ZVRhYmxlKGF1ZGlvQ29udGV4dCwgaW5wdXQsIHdpbmRvd1tpbnN0cl0sIHdoZW4sIGJlYXQubiwgZHVyYXRpb24sIHYpOwogICAgICAgICAgICAgICAgfQogICAgICAgICAgICB9CiAgICAgICAgfQogICAgfQogICAgdGhpcy5zdGFydExvYWQgPSBmdW5jdGlvbihzb25nKSB7CiAgICAgICAgdGhpcy5sb2coJ3N0YXJ0TG9hZCcsIHNvbmcpOwogICAgICAgIHZhciBBdWRpb0NvbnRleHRGdW5jID0gd2luZG93LkF1ZGlvQ29udGV4dCB8fCB3aW5kb3cud2Via2l0QXVkaW9Db250ZXh0OwogICAgICAgIGF1ZGlvQ29udGV4dCA9IG5ldyBBdWRpb0NvbnRleHRGdW5jKCk7CiAgICAgICAgcGxheWVyID0gbmV3IFdlYkF1ZGlvRm9udFBsYXllcigpOwogICAgICAgIHJldmVyYmVyYXRvciA9IHBsYXllci5jcmVhdGVSZXZlcmJlcmF0b3IoYXVkaW9Db250ZXh0KTsKICAgICAgICByZXZlcmJlcmF0b3Iub3V0cHV0LmNvbm5lY3QoYXVkaW9Db250ZXh0LmRlc3RpbmF0aW9uKTsKICAgICAgICBpbnB1dCA9IHJldmVyYmVyYXRvci5pbnB1dDsKICAgICAgICBmb3IgKHZhciBpID0gMDsgaSA8IHNvbmcudHJhY2tzLmxlbmd0aDsgaSsrKSB7CiAgICAgICAgICAgIHZhciBubiA9IHBsYXllci5sb2FkZXIuZmluZEluc3RydW1lbnQoc29uZy50cmFja3NbaV0ucHJvZ3JhbSk7CiAgICAgICAgICAgIHZhciBpbmZvID0gcGxheWVyLmxvYWRlci5pbnN0cnVtZW50SW5mbyhubik7CiAgICAgICAgICAgIHNvbmcudHJhY2tzW2ldLmluZm8gPSBpbmZvOwogICAgICAgICAgICBzb25nLnRyYWNrc1tpXS5pZCA9IG5uOwogICAgICAgICAgICBwbGF5ZXIubG9hZGVyLnN0YXJ0TG9hZChhdWRpb0NvbnRleHQsIGluZm8udXJsLCBpbmZvLnZhcmlhYmxlKTsKICAgICAgICB9CiAgICAgICAgZm9yICh2YXIgaSA9IDA7IGkgPCBzb25nLmJlYXRzLmxlbmd0aDsgaSsrKSB7CiAgICAgICAgICAgIHZhciBubiA9IHBsYXllci5sb2FkZXIuZmluZERydW0oc29uZy5iZWF0c1tpXS5uKTsKICAgICAgICAgICAgdmFyIGluZm8gPSBwbGF5ZXIubG9hZGVyLmRydW1JbmZvKG5uKTsKICAgICAgICAgICAgc29uZy5iZWF0c1tpXS5pbmZvID0gaW5mbzsKICAgICAgICAgICAgc29uZy5iZWF0c1tpXS5pZCA9IG5uOwogICAgICAgICAgICBwbGF5ZXIubG9hZGVyLnN0YXJ0TG9hZChhdWRpb0NvbnRleHQsIGluZm8udXJsLCBpbmZvLnZhcmlhYmxlKTsKICAgICAgICB9CiAgICAgICAgcGxheWVyLmxvYWRlci53YWl0TG9hZChmdW5jdGlvbigpIHsKICAgICAgICAgICAgc2VsZi5sb2FkU29uZyhzb25nKTsKICAgICAgICB9KTsKICAgIH0KICAgIHRoaXMuZ2V0Q3VycmVudFNvbmcgPSBmdW5jdGlvbigpIHsKICAgICAgICByZXR1cm4gbG9hZGVkc29uZzsKICAgIH0KICAgIHRoaXMuZ2V0UG9zaXRpb24gPSBmdW5jdGlvbigpIHsKICAgICAgICByZXR1cm4gY3VycmVudFNvbmdUaW1lOwogICAgfQogICAgdGhpcy5zZXRQb3NpdGlvbiA9IGZ1bmN0aW9uKHBvc2l0aW9uKSB7CiAgICAgICAgaWYgKGxvYWRlZHNvbmcgfHwgc3RvcHBlZHNvbmcpIHsKICAgICAgICAgICAgcGxheWVyLmNhbmNlbFF1ZXVlKGF1ZGlvQ29udGV4dCk7CiAgICAgICAgICAgIHZhciBuZXh0ID0gcG9zaXRpb247IC8vc29uZy5kdXJhdGlvbiAqIHBvc2l0aW9uIC8gMTAwOwogICAgICAgICAgICBzb25nU3RhcnQgPSBzb25nU3RhcnQgLSAobmV4dCAtIGN1cnJlbnRTb25nVGltZSk7CiAgICAgICAgICAgIGN1cnJlbnRTb25nVGltZSA9IG5leHQ7CiAgICAgICAgICAgIGxhc3RQb3NpdGlvbiA9IGN1cnJlbnRTb25nVGltZTsKICAgICAgICB9CiAgICB9CiAgICB0aGlzLnNldFZvbHVtZSA9IGZ1bmN0aW9uKHZvbHVtZSwgdHJhY2spIHsKICAgICAgICBpZiAobG9hZGVkc29uZyAmJiBsb2FkZWRzb25nLnRyYWNrc1t0cmFja10pIHsKICAgICAgICAgICAgcGxheWVyLmNhbmNlbFF1ZXVlKGF1ZGlvQ29udGV4dCk7CiAgICAgICAgICAgIHZhciB2ID0gdm9sdW1lIC8gMTAwOwogICAgICAgICAgICBpZiAodiA8IDAuMDAwMDAxKSB7CiAgICAgICAgICAgICAgICB2ID0gMC4wMDAwMDE7CiAgICAgICAgICAgIH0KICAgICAgICAgICAgbG9hZGVkc29uZy50cmFja3NbdHJhY2tdLnZvbHVtZSA9IHY7CiAgICAgICAgfSBlbHNlIHsKICAgICAgICAgICAgdGhpcy5sb2coInNldFZvbHVtZTogVHJhY2sgbm90IGZvdW5kIiwgdHJhY2spOwogICAgICAgIH0KICAgIH0KICAgIHRoaXMuc2V0SW5zdHJ1bWVudCA9IGZ1bmN0aW9uKHZhbHVlLCB0cmFjaykgewogICAgICAgIGlmIChsb2FkZWRzb25nICYmIGxvYWRlZHNvbmcudHJhY2tzW3RyYWNrXSkgewogICAgICAgICAgICB2YXIgbm4gPSB2YWx1ZTsKICAgICAgICAgICAgdmFyIGluZm8gPSBwbGF5ZXIubG9hZGVyLmluc3RydW1lbnRJbmZvKG5uKTsKICAgICAgICAgICAgdmFyIHNlbGYgPSB0aGlzCiAgICAgICAgICAgIHBsYXllci5sb2FkZXIuc3RhcnRMb2FkKGF1ZGlvQ29udGV4dCwgaW5mby51cmwsIGluZm8udmFyaWFibGUpOwogICAgICAgICAgICBwbGF5ZXIubG9hZGVyLndhaXRMb2FkKGZ1bmN0aW9uKCkgewogICAgICAgICAgICAgICAgc2VsZi5sb2coImluc3RydW1lbnQgbG9hZGVkIiwgaW5mbyk7CiAgICAgICAgICAgICAgICBsb2FkZWRzb25nLnRyYWNrc1t0cmFja10uaW5mbyA9IGluZm87CiAgICAgICAgICAgICAgICBsb2FkZWRzb25nLnRyYWNrc1t0cmFja10uaWQgPSBubjsKICAgICAgICAgICAgfSk7CiAgICAgICAgfSBlbHNlIHsKICAgICAgICAgICAgdGhpcy5sb2coInNldEluc3RydW1lbnQ6IFRyYWNrIG5vdCBmb3VuZCIsIHRyYWNrKTsKICAgICAgICB9CiAgICB9CiAgICB0aGlzLmxvYWRTb25nID0gZnVuY3Rpb24oc29uZykgewogICAgICAgIHRoaXMuc3RvcCgpOwogICAgICAgIGF1ZGlvQ29udGV4dC5yZXN1bWUoKTsKCiAgICAgICAgdGhpcy5sb2coIlRyYWNrcyIsIHNvbmcudHJhY2tzKTsKICAgICAgICB0aGlzLmxvZygiQmVhdHMiLCBzb25nLmJlYXRzKTsKICAgICAgICB0aGlzLmxvZygiRHVyYXRpb24iLCBzb25nLmR1cmF0aW9uKTsKICAgICAgICAvLyB0aGlzLmxvZygiSW5zdHJ1bWVudHMiLCBwbGF5ZXIubG9hZGVyLmluc3RydW1lbnRLZXlzKCkpOwogICAgICAgIC8vIHRoaXMubG9nKCJEcnVtcyIsIHBsYXllci5sb2FkZXIuZHJ1bUtleXMoKSk7CiAgICAgICAgbG9hZGVkc29uZyA9IHNvbmc7CiAgICAgICAgdGhpcy5sb2coIlNvbmcgbG9hZGVkIiwgbG9hZGVkc29uZyk7CiAgICAgICAgaWYgKHRoaXMub25sb2FkKSB7CiAgICAgICAgICAgIHRoaXMub25sb2FkKHNvbmcpCiAgICAgICAgfQogICAgfQogICAgdGhpcy5vcGVuRmlsZSA9IGZ1bmN0aW9uKGZpbGVPYmopIHsKICAgICAgICB2YXIgbWlkaUZpbGUgPSBuZXcgTUlESUZpbGUoZmlsZU9iaik7CiAgICAgICAgdmFyIHNvbmcgPSBtaWRpRmlsZS5wYXJzZVNvbmcoKTsKICAgICAgICBzZWxmLnN0YXJ0TG9hZChzb25nKTsKICAgIH0KICAgIHRoaXMuaGFuZGxlRmlsZVNlbGVjdCA9IGZ1bmN0aW9uKGV2ZW50KSB7CiAgICAgICAgdmFyIHNlbGYgPSB0aGlzOwogICAgICAgIHRoaXMubG9nKCdmaWxlU2VsZWN0JywgZXZlbnQpOwogICAgICAgIHZhciBmaWxlID0gZXZlbnQudGFyZ2V0LmZpbGVzWzBdOwogICAgICAgIHRoaXMubG9nKCdmaWxlJywgZmlsZSk7CiAgICAgICAgdGhpcy5oYW5kbGVCbG9iKGZpbGUpOwogICAgfQogICAgdGhpcy5oYW5kbGVCbG9iID0gZnVuY3Rpb24oYmxvYikgewogICAgICAgIHZhciBzZWxmID0gdGhpczsKICAgICAgICB2YXIgZmlsZVJlYWRlciA9IG5ldyBGaWxlUmVhZGVyKCk7CiAgICAgICAgZmlsZVJlYWRlci5vbmxvYWQgPSBmdW5jdGlvbihldmVudCkgewogICAgICAgICAgICBzZWxmLmxvZygnbG9hZGVkJywgZXZlbnQpOwogICAgICAgICAgICB2YXIgZmlsZU9iaiA9IGV2ZW50LnRhcmdldC5yZXN1bHQ7CiAgICAgICAgICAgIHNlbGYub3BlbkZpbGUoZmlsZU9iaik7CiAgICAgICAgfTsKICAgICAgICBmaWxlUmVhZGVyLnJlYWRBc0FycmF5QnVmZmVyKGJsb2IpOwogICAgfQogICAgdGhpcy5oYW5kbGVVUkwgPSBmdW5jdGlvbihwYXRoKSB7CiAgICAgICAgdGhpcy5sb2coJ2xvYWQgVVJMJywgcGF0aCk7CiAgICAgICAgdmFyIHhtbEh0dHBSZXF1ZXN0ID0gbmV3IFhNTEh0dHBSZXF1ZXN0KCk7CiAgICAgICAgeG1sSHR0cFJlcXVlc3Qub3BlbigiR0VUIiwgcGF0aCwgdHJ1ZSk7CiAgICAgICAgeG1sSHR0cFJlcXVlc3QucmVzcG9uc2VUeXBlID0gImFycmF5YnVmZmVyIjsKICAgICAgICB4bWxIdHRwUmVxdWVzdC5vbmxvYWQgPSBmdW5jdGlvbihlKSB7CiAgICAgICAgICAgIHZhciBhcnJheUJ1ZmZlciA9IHhtbEh0dHBSZXF1ZXN0LnJlc3BvbnNlOwogICAgICAgICAgICB2YXIgbWlkaUZpbGUgPSBuZXcgTUlESUZpbGUoYXJyYXlCdWZmZXIpOwogICAgICAgICAgICB2YXIgc29uZyA9IG1pZGlGaWxlLnBhcnNlU29uZygpOwogICAgICAgICAgICBzZWxmLnN0YXJ0TG9hZChzb25nKTsKICAgICAgICB9OwogICAgICAgIHhtbEh0dHBSZXF1ZXN0LnNlbmQobnVsbCk7CiAgICB9CgoKICAgIGlmIChzb3VyY2UpIHsKICAgICAgICBpZiAodHlwZW9mKHNvdXJjZSkgPT0gInN0cmluZyIgJiYgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoc291cmNlKSkgewogICAgICAgICAgICBzb3VyY2UgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChzb3VyY2UpCiAgICAgICAgfQogICAgICAgIGlmIChzb3VyY2UgaW5zdGFuY2VvZiBIVE1MSW5wdXRFbGVtZW50KSB7CiAgICAgICAgICAgIHNvdXJjZS5hZGRFdmVudExpc3RlbmVyKCdjaGFuZ2UnLCB0aGlzLmhhbmRsZUZpbGVTZWxlY3QuYmluZCh0aGlzKSwgZmFsc2UpOwogICAgICAgIH0gZWxzZSBpZiAoc291cmNlIGluc3RhbmNlb2YgQmxvYikgewogICAgICAgICAgICBzb3VyY2UuYWRkRXZlbnRMaXN0ZW5lcignY2hhbmdlJywgdGhpcy5oYW5kbGVCbG9iLmJpbmQodGhpcyksIGZhbHNlKTsKICAgICAgICB9IGVsc2UgewogICAgICAgICAgICAvLyBmYWxsYmFjayB0byByZWFkIGZyb20gVVJMIAogICAgICAgICAgICAvLyBOb3RlOiBjcm9zcyBkb21haW4gcmVxdWVzdHMgbXVzdCBwYXNzIENPUlMgcG9saWN5CiAgICAgICAgICAgIHRoaXMuaGFuZGxlVVJMKHNvdXJjZSk7CiAgICAgICAgfQogICAgfQoKfQ==", import.meta.url).href
       ];
       for (const w of k)
-        await new Promise((o, v) => {
+        await new Promise((L, v) => {
           const n = document.createElement("script");
-          n.src = w, n.async = !1, n.onload = () => o(), n.onerror = () => v(new Error(`Failed to load ${w}`)), document.head.appendChild(n);
+          n.src = w, n.async = !1, n.onload = () => L(), n.onerror = () => v(new Error(`Failed to load ${w}`)), document.head.appendChild(n);
         });
-      T(!0);
+      p(!0);
     })().catch(console.error);
-  }, []), i(() => {
-    y && Z && m(Z);
-  }, [y, Z, m]), i(() => {
-    y && c && (J(), Q(c.name), W(c));
-  }, [y, c, W, J]), i(() => {
-    R && b && S();
-  }, [R, b, S]);
-  const O = (M) => {
-    const k = parseFloat(M.target.value);
-    p(k);
+  }, []), x(() => {
+    M && g && m(g);
+  }, [M, g, m]), x(() => {
+    M && l && (J(), T(l.name), N(l));
+  }, [M, l, N, J]), x(() => {
+    d && G && S();
+  }, [d, G, S]);
+  const O = (a) => {
+    const k = parseFloat(a.target.value);
+    Q(k);
   }, D = () => {
-    a ? u() : S();
-  }, f = (M) => {
-    const k = Math.floor(M / 60), w = Math.floor(M % 60);
+    z ? o() : S();
+  }, f = (a) => {
+    const k = Math.floor(a / 60), w = Math.floor(a % 60);
     return `${k}:${w.toString().padStart(2, "0")}`;
-  }, j = G > 0 ? Y / G * 100 : 0;
-  return y ? /* @__PURE__ */ d.jsx("div", { className: `${z.player} ${l}`, children: /* @__PURE__ */ d.jsxs("div", { className: z.controls, children: [
-    /* @__PURE__ */ d.jsx(
+  }, j = U > 0 ? Y / U * 100 : 0;
+  return M ? /* @__PURE__ */ W.jsx("div", { style: b.player, className: V, children: /* @__PURE__ */ W.jsxs("div", { style: b.controls, children: [
+    /* @__PURE__ */ W.jsx(
       "button",
       {
         type: "button",
         onClick: D,
-        disabled: !R,
-        className: z.playButton,
-        "aria-label": a ? "Pause" : "Play",
-        children: a ? /* @__PURE__ */ d.jsx("svg", { viewBox: "0 0 24 24", width: "24", height: "24", children: /* @__PURE__ */ d.jsx("path", { fill: "currentColor", d: "M6 4h4v16H6V4zm8 0h4v16h-4V4z" }) }) : /* @__PURE__ */ d.jsx("svg", { viewBox: "0 0 24 24", width: "24", height: "24", children: /* @__PURE__ */ d.jsx("path", { fill: "currentColor", d: "M8 5v14l11-7z" }) })
+        disabled: !d,
+        className: "react-midi-player-button",
+        style: {
+          ...b.playButton,
+          ...d ? {} : b.playButtonDisabled
+        },
+        "aria-label": z ? "Pause" : "Play",
+        children: z ? /* @__PURE__ */ W.jsx("svg", { viewBox: "0 0 24 24", width: "24", height: "24", children: /* @__PURE__ */ W.jsx("path", { fill: "currentColor", d: "M6 4h4v16H6V4zm8 0h4v16h-4V4z" }) }) : /* @__PURE__ */ W.jsx("svg", { viewBox: "0 0 24 24", width: "24", height: "24", children: /* @__PURE__ */ W.jsx("path", { fill: "currentColor", d: "M8 5v14l11-7z" }) })
       }
     ),
-    /* @__PURE__ */ d.jsx("div", { className: z.timeDisplay, children: f(Y) }),
-    /* @__PURE__ */ d.jsx("div", { className: z.progressContainer, children: /* @__PURE__ */ d.jsx(
+    /* @__PURE__ */ W.jsx("div", { style: b.timeDisplay, children: f(Y) }),
+    /* @__PURE__ */ W.jsx("div", { style: b.progressContainer, children: /* @__PURE__ */ W.jsx(
       "input",
       {
         type: "range",
         min: "0",
-        max: G || 100,
+        max: U || 100,
         step: "0.1",
         value: Y,
         onChange: O,
-        disabled: !R,
-        className: z.progressBar,
+        disabled: !d,
+        className: "react-midi-player-progress",
         style: {
+          ...b.progressBar,
+          ...d ? {} : b.progressBarDisabled,
           background: `linear-gradient(to right, #2196F3 0%, #2196F3 ${j}%, #ddd ${j}%, #ddd 100%)`
         }
       }
     ) }),
-    /* @__PURE__ */ d.jsx("div", { className: z.timeDisplay, children: f(G) })
-  ] }) }) : /* @__PURE__ */ d.jsx("div", { className: `${z.player} ${l}`, children: /* @__PURE__ */ d.jsx("div", { className: z.loading, children: "Loading MIDI Player..." }) });
+    /* @__PURE__ */ W.jsx("div", { style: b.timeDisplay, children: f(U) })
+  ] }) }) : /* @__PURE__ */ W.jsx("div", { style: b.player, className: V, children: /* @__PURE__ */ W.jsx("div", { style: b.loading, children: "Loading MIDI Player..." }) });
 }
 export {
-  UC as MIDIPlayer,
-  UC as default,
+  WC as MIDIPlayer,
+  WC as default,
   AC as useMIDIPlayer
 };
