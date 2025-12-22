@@ -58,7 +58,8 @@ The demo will open automatically at `http://localhost:3000`. You can upload MIDI
 ## Installation
 
 ```bash
-npm install react-midi-player2
+# not avalible yet:
+# npm install react-midi-player2
 ```
 
 Or install from GitHub:
