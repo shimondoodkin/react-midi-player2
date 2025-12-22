@@ -33,6 +33,11 @@ function App() {
         <p>A React component for playing MIDI files in the browser</p>
       </header>
 
+      <section className="info-section">
+          <h2>github</h2>
+          <a href="https://github.com/shimondoodkin/react-midi-player2">https://github.com/shimondoodkin/react-midi-player2</a>
+      </section>
+
       <main className="app-main">
         <section className="demo-section">
           <h2>Try it out</h2>
