@@ -20,7 +20,7 @@ A React MIDI player component with HTML5 audio player styling. Built on top of [
 ## Project Structure
 
 ```
-react-midi-player/
+react-midi-player2/
 ├── lib/
 │   └── midi/
 │       ├── MIDIPlayer.js          # Core MIDI player with background playback support
@@ -58,7 +58,7 @@ The demo will open automatically at `http://localhost:3000`. You can upload MIDI
 ## Installation
 
 ```bash
-npm install react-midi-player
+npm install react-midi-player2
 ```
 
 Or install from GitHub:
